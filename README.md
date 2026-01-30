@@ -1,1 +1,1 @@
-bspwm + polybar + sxhkd
+bspwm + polybar + sxhkd config
