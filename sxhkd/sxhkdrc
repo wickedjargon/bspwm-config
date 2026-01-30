@@ -1,0 +1,202 @@
+#
+# SXHKD Configuration
+# Converted from DWM config.h keybindings
+#
+
+# ========== BSPWM HOTKEYS ==========
+
+# Quit/restart bspwm
+super + shift + q
+    bspc quit
+
+super + shift + r
+    bspc wm -r
+
+# ========== WINDOW MANAGEMENT ==========
+
+# Close/kill window (DWM: Mod+p)
+super + p
+    bspc node -c
+
+# Toggle fullscreen (DWM: Mod+f)
+super + f
+    bspc node -t ~fullscreen
+
+# Toggle floating (DWM: Mod+Shift+f)
+super + shift + f
+    bspc node -t ~floating
+
+# Toggle sticky (DWM: Mod+Shift+s)
+super + shift + s
+    bspc node -g sticky
+
+# Focus next/previous window (DWM: Mod+j/k)
+super + {j,k}
+    bspc node -f {next,prev}.local.!hidden.window
+
+# Swap with next/previous window (DWM: Mod+Shift+j/k)
+super + shift + {j,k}
+    bspc node -s {next,prev}.local.!hidden.window
+
+# ========== LAYOUT MANAGEMENT ==========
+
+# Cycle layout forward/backward (DWM: Mod+t for tiled, Mod+g for monocle, etc)
+super + t
+    bspc desktop -l next
+
+# Set tiled layout
+super + shift + t
+    bspc node -t tiled
+
+# Monocle mode (DWM: Mod+g)
+super + g
+    bspc desktop -l monocle
+
+# Increase/decrease master size (DWM: Mod+Shift+h/l)
+super + shift + h
+    bspc node -z {right -20 0,right 20 0} 
+
+
+# Increase/decrease master size (DWM: Mod+Shift+h/l)
+super + shift + l
+    bspc node -z {left -20 0,left 20 0}
+
+# Toggle gaps (DWM: Mod+a for wide gaps)
+super + a
+    bspc config window_gap {100,2}
+
+# Increase/decrease gaps (DWM: Mod+x/Shift+x, Mod+y/Shift+y)
+super + x
+    bspc config window_gap $(($(bspc config window_gap) + 3))
+
+super + shift + x
+    bspc config window_gap $(($(bspc config window_gap) - 3))
+
+# ========== WORKSPACE SWITCHING ==========
+
+# Switch to workspace (DWM: Mod+1-6)
+super + {1-6}
+    bspc desktop -f '^{1-6}'
+
+# Move window to workspace (DWM: Mod+Shift+1-6)
+super + shift + {1-6}
+    bspc node -d '^{1-6}'
+
+# Move to next/previous workspace (DWM: Mod+h/l)
+super + {h,l}
+    bspc desktop -f {prev,next}.local
+
+# ========== APPLICATION LAUNCHERS ==========
+
+# Terminal (DWM: Mod+Return)
+super + Return
+    st
+
+# Scratchpad terminal (DWM: Mod+Shift+Return)
+# Note: BSPWM doesn't have native scratchpads, using floating centered terminal
+super + shift + Return
+    st -n spterm -g 120x34
+
+# Dmenu run (DWM: Mod+d)
+super + d
+    dmenu_run
+
+# App finder (DWM: Mod+space)
+super + space
+    xfce4-appfinder
+
+# Emacs (DWM: Mod+m)
+super + m
+    emacsclient -c
+
+# Browser (DWM: Mod+w)
+super + w
+    dmenu-browser
+
+# Commands menu (DWM: Mod+b)
+super + b
+    dmenu-commands
+
+# System menu (DWM: Mod+BackSpace)
+super + BackSpace
+    dmenu-system
+
+# Clipmenu (DWM: Mod+c)
+super + c
+    clipmenu
+
+# Unicode picker (DWM: Mod+Shift+grave)
+super + shift + grave
+    dmenuunicode
+
+# WiFi menu (DWM: Mod+i)
+super + i
+    dmenu-wifi-menu
+
+# Night/day mode (DWM: Mod+n)
+super + n
+    dmenu-night-and-day
+
+# Xmouseless (DWM: Mod+o)
+super + o
+    xmouseless
+
+# ========== VOLUME CONTROLS ==========
+
+# Volume up (DWM: Mod+equal, XF86AudioRaiseVolume)
+super + equal
+    pactl set-sink-volume @DEFAULT_SINK@ +5% && polybar-msg hook pulseaudio 1
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5% && polybar-msg hook pulseaudio 1
+
+# Volume down (DWM: Mod+minus, XF86AudioLowerVolume)
+super + minus
+    pactl set-sink-volume @DEFAULT_SINK@ -5% && polybar-msg hook pulseaudio 1
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5% && polybar-msg hook pulseaudio 1
+
+# Mute toggle (DWM: Mod+0, XF86AudioMute)
+super + 0
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && polybar-msg hook pulseaudio 1
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && polybar-msg hook pulseaudio 1
+
+# ========== BRIGHTNESS CONTROLS ==========
+
+# Brightness up
+XF86MonBrightnessUp
+    brightnessctl set +5% && polybar-msg hook brightness 1
+
+# Brightness down
+XF86MonBrightnessDown
+    brightnessctl set 5%- && polybar-msg hook brightness 1
+
+# ========== MEDIA CONTROLS ==========
+
+XF86AudioPlay
+    mpc play
+
+XF86AudioPause
+    mpc pause
+
+XF86AudioStop
+    mpc stop
+
+XF86AudioNext
+    mpc next
+
+XF86AudioPrev
+    mpc prev
+
+# ========== MISC HOTKEYS ==========
+
+# Toggle bar (DWM: Mod+Shift+b)
+super + shift + b
+    polybar-msg cmd toggle
+
+# Reload sxhkd config
+super + Escape
+    pkill -USR1 -x sxhkd
