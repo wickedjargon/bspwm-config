@@ -39,6 +39,10 @@ super + t
 super + g
     bspc desktop -l monocle
 
+# Deck Layout (bspwm-deck script)
+super + r
+    bspwm-deck
+
 # Resize window / move gap left (h) and right (l)
 super + shift + h
     bspc node -z right -20 0 || bspc node -z left -20 0
