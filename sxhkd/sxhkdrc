@@ -40,13 +40,9 @@ super + shift + {j,k}
 
 # ========== LAYOUT MANAGEMENT ==========
 
-# Cycle layout forward/backward (DWM: Mod+t for tiled, Mod+g for monocle, etc)
-super + t
-    bspc desktop -l next
-
 # Set tiled layout
-super + shift + t
-    bspc node -t tiled
+super + t
+    bspc desktop -l tiled
 
 # Monocle mode (DWM: Mod+g)
 super + g
@@ -59,16 +55,7 @@ super + shift + h
 super + shift + l
     bspc node -z right 20 0 || bspc node -z left 20 0
 
-# Toggle gaps (DWM: Mod+a for wide gaps)
-super + a
-    bspc config window_gap {100,2}
 
-# Increase/decrease gaps (DWM: Mod+x/Shift+x, Mod+y/Shift+y)
-super + x
-    bspc config window_gap $(($(bspc config window_gap) + 3))
-
-super + shift + x
-    bspc config window_gap $(($(bspc config window_gap) - 3))
 
 # ========== WORKSPACE SWITCHING ==========
 
@@ -90,10 +77,7 @@ super + {h,l}
 super + Return
     st
 
-# Scratchpad terminal (DWM: Mod+Shift+Return)
-# Note: BSPWM doesn't have native scratchpads, using floating centered terminal
-super + shift + Return
-    st -n spterm -g 120x34
+
 
 # Dmenu run (DWM: Mod+d)
 super + d
@@ -123,9 +107,7 @@ super + BackSpace
 super + c
     clipmenu
 
-# Unicode picker (DWM: Mod+Shift+grave)
-super + shift + grave
-    dmenuunicode
+
 
 # WiFi menu (DWM: Mod+i)
 super + i
