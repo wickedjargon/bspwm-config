@@ -52,14 +52,12 @@ super + shift + t
 super + g
     bspc desktop -l monocle
 
-# Increase/decrease master size (DWM: Mod+Shift+h/l)
+# Resize window / move gap left (h) and right (l)
 super + shift + h
-    bspc node -z {right -20 0,right 20 0} 
+    bspc node -z right -20 0 || bspc node -z left -20 0
 
-
-# Increase/decrease master size (DWM: Mod+Shift+h/l)
 super + shift + l
-    bspc node -z {left -20 0,left 20 0}
+    bspc node -z right 20 0 || bspc node -z left 20 0
 
 # Toggle gaps (DWM: Mod+a for wide gaps)
 super + a
