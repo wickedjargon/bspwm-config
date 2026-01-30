@@ -3,15 +3,6 @@
 # Converted from DWM config.h keybindings
 #
 
-# ========== BSPWM HOTKEYS ==========
-
-# Quit/restart bspwm
-super + shift + q
-    bspc quit
-
-super + shift + r
-    bspc wm -r
-
 # ========== WINDOW MANAGEMENT ==========
 
 # Close/kill window (DWM: Mod+p)
@@ -77,8 +68,6 @@ super + {h,l}
 super + Return
     st
 
-
-
 # Dmenu run (DWM: Mod+d)
 super + d
     dmenu_run
@@ -107,8 +96,6 @@ super + BackSpace
 super + c
     clipmenu
 
-
-
 # WiFi menu (DWM: Mod+i)
 super + i
     dmenu-wifi-menu
@@ -116,10 +103,6 @@ super + i
 # Night/day mode (DWM: Mod+n)
 super + n
     dmenu-night-and-day
-
-# Xmouseless (DWM: Mod+o)
-super + o
-    xmouseless
 
 # ========== VOLUME CONTROLS ==========
 
@@ -170,13 +153,3 @@ XF86AudioNext
 
 XF86AudioPrev
     mpc prev
-
-# ========== MISC HOTKEYS ==========
-
-# Toggle bar (DWM: Mod+Shift+b)
-super + shift + b
-    polybar-msg cmd toggle
-
-# Reload sxhkd config
-super + Escape
-    pkill -USR1 -x sxhkd
