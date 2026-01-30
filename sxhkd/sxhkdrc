@@ -58,9 +58,13 @@ super + {1-6}
 super + shift + {1-6}
     bspc node -d '^{1-6}'
 
-# Move to next/previous workspace (DWM: Mod+h/l)
-super + {h,l}
-    bspc desktop -f {prev,next}.local
+# Move to previous workspace (no wrap)
+super + h
+    curr=$(bspc query -D -d focused); first=$(bspc query -D -d .local | head -n1); [ "$curr" != "$first" ] && bspc desktop -f prev.local
+
+# Move to next workspace (no wrap)
+super + l
+    curr=$(bspc query -D -d focused); last=$(bspc query -D -d .local | tail -n1); [ "$curr" != "$last" ] && bspc desktop -f next.local
 
 # ========== APPLICATION LAUNCHERS ==========
 
