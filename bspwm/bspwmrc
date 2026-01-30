@@ -21,8 +21,8 @@ bspc config focused_border_color "#8b1a1a"   # selbordercolor
 
 #### WINDOW BEHAVIOR ####
 bspc config split_ratio          0.55        # matches DWM mfact
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
 bspc config single_monocle       false
 
 #### POINTER BEHAVIOR ####
