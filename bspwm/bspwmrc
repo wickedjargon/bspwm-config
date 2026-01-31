@@ -7,6 +7,11 @@
 # Create 6 workspaces to match DWM tags
 bspc monitor -d 1 2 3 4 5 6
 
+# Set all desktops to Monocle layout by default
+for desktop in $(bspc query -D); do
+	bspc desktop $desktop -l monocle
+done
+
 #### WINDOW APPEARANCE ####
 # Border width (from DWM: borderpx = 3)
 bspc config border_width         3
